@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aluguel Protegido — Fiança Digital + Assistência 24h</title>
+  <meta name="description" content="Fiança locatícia digital com aprovação instantânea para imobiliárias. Zero inadimplência, mais contratos fechados." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== RESET ===== */
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family:'Poppins', sans-serif; color:#1E293B; line-height:1.6; }
+
+    /* ===== UTILITIES ===== */
+    .container { max-width:1120px; margin:0 auto; padding:0 24px; }
+    .flex { display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:32px; }
+    .text-center { text-align:center; }
+    .section { padding:80px 0; }
+    .section-title {
+      font-family:'Montserrat',sans-serif; font-weight:900; font-size:clamp(28px,4vw,40px);
+      color:#1E3A8A; margin-bottom:12px; line-height:1.2;
+    }
+    .section-sub {
+      font-size:clamp(15px,2vw,18px); color:#64748B; max-width:680px; margin:0 auto 48px;
+    }
+    .btn {
+      display:inline-block; font-family:'Montserrat',sans-serif; font-weight:700;
+      font-size:16px; padding:16px 36px; border-radius:12px; text-decoration:none;
+      transition:all .25s; cursor:pointer; border:none;
+    }
+    .btn-primary { background:#FBBF24; color:#1E3A8A; }
+    .btn-primary:hover { background:#F59E0B; transform:translateY(-2px); box-shadow:0 8px 24px rgba(251,191,36,.4); }
+    .btn-secondary { background:transparent; color:#fff; border:2px solid rgba(255,255,255,.6); }
+    .btn-secondary:hover { border-color:#fff; background:rgba(255,255,255,.08); }
+    .btn-white { background:#fff; color:#1E3A8A; }
+    .btn-white:hover { background:#F1F5F9; transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,.15); }
+    .btn-whatsapp { background:#25D366; color:#fff; display:inline-flex; align-items:center; gap:10px; }
+    .btn-whatsapp:hover { background:#1DA851; transform:translateY(-2px); }
+
+    /* ===== HERO ===== */
+    .hero {
+      background:linear-gradient(135deg, #1E3A8A 0%, #1E40AF 50%, #2563EB 100%);
+      color:#fff; padding:100px 0 80px; position:relative; overflow:hidden;
+    }
+    .hero::before {
+      content:''; position:absolute; top:-50%; right:-20%; width:600px; height:600px;
+      background:radial-gradient(circle,rgba(251,191,36,.08) 0%,transparent 70%);
+      border-radius:50%;
+    }
+    .hero-content { position:relative; z-index:1; }
+    .hero h1 {
+      font-family:'Montserrat',sans-serif; font-weight:900;
+      font-size:clamp(32px,5vw,52px); line-height:1.1; margin-bottom:20px;
+    }
+    .hero h1 span { color:#FBBF24; }
+    .hero p {
+      font-size:clamp(16px,2vw,19px); opacity:.9; max-width:640px; margin-bottom:36px;
+    }
+    .hero-buttons { display:flex; gap:16px; flex-wrap:wrap; margin-bottom:48px; }
+    .hero-social {
+      display:flex; align-items:center; gap:20px; flex-wrap:wrap;
+      padding:16px 24px; background:rgba(255,255,255,.08); border-radius:12px;
+      font-size:14px; max-width:fit-content;
+    }
+    .hero-social .check { color:#4ADE80; font-weight:700; }
+    .hero-image {
+      flex:1; min-width:280px; text-align:center;
+    }
+    .hero-image img { max-width:100%; border-radius:20px; box-shadow:0 20px 60px rgba(0,0,0,.2); }
+
+    /* ===== PAIN POINTS ===== */
+    .pain-points { background:#fff; }
+    .pain-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:28px; }
+    .pain-card {
+      background:#F8FAFC; border-radius:16px; padding:36px 28px;
+      transition:all .3s; border:1px solid #E2E8F0; text-align:center;
+    }
+    .pain-card:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(0,0,0,.06); border-color:#1E3A8A22; }
+    .pain-icon { width:56px; height:56px; border-radius:14px; display:flex; align-items:center; justify-content:center; margin:0 auto 18px; font-size:26px; }
+    .pain-icon.red { background:#FEE2E2; }
+    .pain-icon.green { background:#DCFCE7; }
+    .pain-icon.blue { background:#DBEAFE; }
+    .pain-card h3 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:18px; color:#1E3A8A; margin-bottom:10px; }
+    .pain-card p { font-size:14px; color:#64748B; margin-bottom:14px; }
+    .pain-highlight { font-size:13px; font-weight:600; color:#059669; background:#ECFDF5; padding:4px 12px; border-radius:20px; display:inline-block; }
+
+    /* ===== HOW IT WORKS ===== */
+    .how-it-works { background:#F0F4FF; }
+    .steps { display:flex; gap:24px; flex-wrap:wrap; justify-content:center; }
+    .step {
+      flex:1; min-width:240px; max-width:320px; text-align:center; position:relative;
+      background:#fff; border-radius:16px; padding:36px 24px; box-shadow:0 4px 16px rgba(0,0,0,.04);
+    }
+    .step-number {
+      width:48px; height:48px; border-radius:50%; background:#1E3A8A; color:#fff;
+      font-family:'Montserrat',sans-serif; font-weight:900; font-size:20px;
+      display:flex; align-items:center; justify-content:center; margin:0 auto 16px;
+    }
+    .step-icon { font-size:36px; margin-bottom:12px; }
+    .step h4 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:17px; color:#1E3A8A; margin-bottom:8px; }
+    .step p { font-size:14px; color:#64748B; }
+    .step-tag {
+      display:inline-block; margin-top:12px; font-size:12px; font-weight:600;
+      color:#1E3A8A; background:#DBEAFE; padding:4px 12px; border-radius:20px;
+    }
+
+    /* ===== B2C ===== */
+    .b2c {
+      background:linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%); color:#fff;
+    }
+    .b2c .section-title { color:#fff; }
+    .b2c .section-sub { color:rgba(255,255,255,.8); }
+    .benefits-list { max-width:600px; margin:0 auto 36px; }
+    .benefit-item {
+      display:flex; align-items:flex-start; gap:14px; margin-bottom:16px;
+      font-size:16px; text-align:left;
+    }
+    .benefit-item .check { color:#4ADE80; font-size:20px; flex-shrink:0; margin-top:2px; }
+    .b2c-compare {
+      background:rgba(255,255,255,.1); border-radius:16px; padding:20px 28px;
+      display:flex; flex-wrap:wrap; gap:24px; justify-content:center; margin-top:32px;
+      font-size:14px;
+    }
+    .b2c-compare .old { text-decoration:line-through; opacity:.6; }
+    .b2c-compare .new { font-weight:700; color:#FBBF24; }
+
+    /* ===== PRICING ===== */
+    .pricing { background:#fff; }
+    .pricing-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:32px; }
+    .pricing-card {
+      background:#F8FAFC; border-radius:20px; padding:40px 32px;
+      border:2px solid #E2E8F0; transition:all .3s; position:relative;
+    }
+    .pricing-card:hover { transform:translateY(-4px); box-shadow:0 16px 48px rgba(0,0,0,.08); }
+    .pricing-card.featured { border-color:#FBBF24; background:#FFFBEB; }
+    .pricing-card h3 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:20px; color:#1E3A8A; margin-bottom:4px; }
+    .pricing-card .tag { font-size:13px; color:#64748B; margin-bottom:16px; }
+    .pricing-card .price { font-family:'Montserrat',sans-serif; font-weight:900; font-size:36px; color:#1E3A8A; }
+    .pricing-card .price span { font-size:16px; font-weight:400; color:#64748B; }
+    .pricing-card ul { list-style:none; margin:20px 0; }
+    .pricing-card ul li { padding:6px 0; font-size:14px; color:#475569; display:flex; align-items:center; gap:10px; }
+    .pricing-card ul li::before { content:'✓'; color:#059669; font-weight:700; }
+    .pricing-card .btn { width:100%; text-align:center; margin-top:12px; }
+
+    /* ===== FAQ ===== */
+    .faq { background:#F0F4FF; }
+    .faq-list { max-width:740px; margin:0 auto; }
+    .faq-item {
+      background:#fff; border-radius:14px; margin-bottom:12px; overflow:hidden;
+      border:1px solid #E2E8F0;
+    }
+    .faq-question {
+      padding:18px 24px; font-weight:600; font-size:16px; color:#1E3A8A;
+      cursor:pointer; display:flex; justify-content:space-between; align-items:center;
+      background:transparent; border:none; width:100%; text-align:left; font-family:'Poppins',sans-serif;
+    }
+    .faq-question::after {
+      content:'+'; font-size:20px; font-weight:700; color:#1E3A8A; transition:transform .3s;
+    }
+    .faq-question.active::after { content:'−'; }
+    .faq-answer {
+      padding:0 24px 18px; font-size:14px; color:#64748B; display:none; line-height:1.7;
+    }
+    .faq-answer.open { display:block; }
+
+    /* ===== CTA FINAL ===== */
+    .cta-final {
+      background:linear-gradient(135deg, #1E3A8A 0%, #0F2557 100%); color:#fff; text-align:center;
+    }
+    .cta-final h2 { font-family:'Montserrat',sans-serif; font-weight:900; font-size:clamp(26px,4vw,40px); margin-bottom:12px; }
+    .cta-final p { font-size:17px; opacity:.85; margin-bottom:32px; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background:#0F2557; color:rgba(255,255,255,.6); padding:32px 0; text-align:center;
+      font-size:13px; border-top:1px solid rgba(255,255,255,.06);
+    }
+    footer strong { color:rgba(255,255,255,.8); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width:768px) {
+      .section { padding:56px 0; }
+      .hero { padding:60px 0 48px; }
+      .hero-buttons { flex-direction:column; }
+      .hero-buttons .btn { width:100%; text-align:center; }
+      .hero-social { font-size:13px; padding:14px 18px; }
+      .step { max-width:100%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="container hero-content">
+    <div class="flex">
+      <div style="flex:1.3;min-width:300px;">
+        <h1>Zere a Inadimplência e <span>Feche 30% Mais Contratos</span></h1>
+        <p>A primeira fiança locatícia digital com <strong>aprovação instantânea</strong> + assistência 24h de Campo Largo. Aprovamos inquilinos em segundos e pagamos o aluguel se atrasar.</p>
+        <div class="hero-buttons">
+          <a href="https://wa.me/5541XXXXXXXX?text=Olá!%20Quero%20uma%20demonstração%20do%20Aluguel%20Protegido%20para%20minha%20imobiliária." class="btn btn-primary" target="_blank">📋 QUERO UMA DEMO GRÁTIS</a>
+          <a href="#para-inquilino" class="btn btn-secondary">🔑 SOU INQUILINO — QUERO ALUGAR SEM FIADOR</a>
+        </div>
+        <div class="hero-social">
+          <span><span class="check">✅</span> Já aprovamos <strong>+127 inquilinos</strong> em Campo Largo</span>
+          <span><span class="check">✅</span> <strong>0%</strong> de inadimplência para imobiliárias parceiras</span>
+        </div>
+      </div>
+      <div class="hero-image">
+        <svg viewBox="0 0 400 340" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;">
+          <rect x="20" y="80" width="360" height="220" rx="20" fill="rgba(251,191,36,0.15)" stroke="#FBBF24" stroke-width="2"/>
+          <rect x="40" y="60" width="150" height="100" rx="12" fill="#FBBF24" opacity="0.9"/>
+          <text x="90" y="120" font-family="Montserrat,sans-serif" font-weight="900" font-size="36" fill="#1E3A8A" text-anchor="middle">AP</text>
+          <circle cx="300" cy="160" r="40" fill="rgba(255,255,255,0.1)" stroke="#fff" stroke-width="2" stroke-dasharray="6 4"/>
+          <text x="300" y="168" font-family="Poppins,sans-serif" font-size="12" fill="#fff" text-anchor="middle">✔ Aprovado</text>
+          <text x="80" y="225" font-family="Poppins,sans-serif" font-weight="600" font-size="14" fill="#fff">🏠 Imobiliária parceira</text>
+          <text x="80" y="250" font-family="Poppins,sans-serif" font-size="12" fill="rgba(255,255,255,0.7)">Aluguel no dia 5 • Garantido</text>
+          <text x="80" y="275" font-family="Poppins,sans-serif" font-size="11" fill="#FBBF24">📍 Campo Largo — PR</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PAIN POINTS ===== -->
+<section class="section pain-points">
+  <div class="container text-center">
+    <h2 class="section-title">Cansado de perder tempo e dinheiro com aluguel?</h2>
+    <p class="section-sub">A Aluguel Protegido resolve as 3 maiores dores da sua imobiliária.</p>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-icon red">💰</div>
+        <h3>Inadimplência Zerada</h3>
+        <p>Se o inquilino atrasar o aluguel, nós pagamos pra você no dia 5. Garantido por contrato. Enquanto isso, a gente assume a cobrança.</p>
+        <span class="pain-highlight">Você recebe todo mês, pontualmente</span>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon green">📈</div>
+        <h3>Mais Contratos Fechados</h3>
+        <p>Aprovação instantânea em segundos. Aprovamos inquilinos sem fiador com análise de crédito automatizada. Menos exigência = mais negócio fechado.</p>
+        <span class="pain-highlight">Transforme "não" em "sim" na hora</span>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon blue">🔧</div>
+        <h3>Sem Dor de Cabeça 24h</h3>
+        <p>Vazou, luz caiu, chave quebrou? O inquilino aciona nosso app e a assistência resolve. Você não recebe mais ligação noturna de emergência.</p>
+        <span class="pain-highlight">Nós atendemos. Você dorme tranquilo</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section class="section how-it-works">
+  <div class="container text-center">
+    <h2 class="section-title">Simples assim: 3 passos</h2>
+    <p class="section-sub">Em menos de 5 minutos você tem mais um contrato garantido.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-icon">📤</div>
+        <h4>Você <span style="color:#F59E0B;">INDICA</span></h4>
+        <p>A imobiliária envia a proposta do inquilino pelo nosso sistema. Leva 2 minutos.</p>
+        <span class="step-tag">"Indiquei e já recebi o link na hora"</span>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-icon">⚡</div>
+        <h4>A gente <span style="color:#059669;">APROVA</span></h4>
+        <p>Análise de crédito <strong>INSTANTÂNEA</strong> via API. Sem fiador, sem espera. Resposta em segundos.</p>
+        <span class="step-tag">⏱ Tempo médio: 30 segundos</span>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-icon">🛡️</div>
+        <h4>Você fica <span style="color:#2563EB;">TRANQUILO</span></h4>
+        <p>Aluguel cai na conta todo dia 5. Se tiver problema, a gente resolve. Se tiver reparo, a gente cobre.</p>
+        <span class="step-tag">✅ 0% inadimplência • ✅ 0 ligações</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== B2C ===== -->
+<section id="para-inquilino" class="section b2c">
+  <div class="container text-center">
+    <h2 class="section-title">Alugar sem fiador e sem caução? Tem sim.</h2>
+    <p class="section-sub">Aprovação em segundos. Pagamento parcelado no cartão de crédito.</p>
+    <div class="benefits-list">
+      <div class="benefit-item"><span class="check">✅</span> <strong>Aprovação em segundos</strong> — resposta na hora, sem burocracia</div>
+      <div class="benefit-item"><span class="check">✅</span> Pague apenas <strong>8% a 12% do aluguel</strong> por mês, no cartão</div>
+      <div class="benefit-item"><span class="check">✅</span> <strong>Assistência 24h inclusa:</strong> encanador, eletricista, chaveiro</div>
+      <div class="benefit-item"><span class="check">✅</span> <strong>100% digital</strong>, sem papelada, sem fiador, sem calção</div>
+    </div>
+    <a href="https://wa.me/5541XXXXXXXX?text=Olá!%20Quero%20simular%20minha%20aprovação%20no%20Aluguel%20Protegido" class="btn btn-white" target="_blank">📱 SIMULE SUA APROVAÇÃO EM 1 MINUTO</a>
+    <div class="b2c-compare">
+      <span class="old">💰 Caução tradicional: <strong>R$ 4.500</strong> (3 meses)</span>
+      <span class="new">🔹 Aluguel Protegido: <strong>~R$ 150/mês</strong></span>
+      <span style="color:#FBBF24;font-weight:700;">Economia de R$ 2.700 por ano 🎯</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRICING ===== -->
+<section class="section pricing">
+  <div class="container text-center">
+    <h2 class="section-title">Transparente e justo</h2>
+    <p class="section-sub">Sem letras miúdas, sem taxa escondida. Cancele quando quiser.</p>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <h3>🏢 Para Imobiliária</h3>
+        <p class="tag">Receita garantida todo mês</p>
+        <div class="price">R$ 20 <span>/ contrato / mês</span></div>
+        <ul>
+          <li>Cobertura de inadimplência</li>
+          <li>Pagamento garantido no dia 5</li>
+          <li>Gestão de cobrança</li>
+          <li>Assistência 24h inclusa</li>
+          <li>Zero custo de implantação</li>
+          <li>Cancele quando quiser</li>
+        </ul>
+        <a href="https://wa.me/5541XXXXXXXX?text=Olá!%20Quero%20uma%20demo%20do%20Aluguel%20Protegido" class="btn btn-primary" target="_blank">QUERO TESTAR GRÁTIS</a>
+      </div>
+      <div class="pricing-card featured">
+        <h3>🔑 Para Inquilino</h3>
+        <p class="tag">Muito mais barato que calção</p>
+        <div class="price">8% a 12% <span>do aluguel/mês</span></div>
+        <ul>
+          <li>Aprovação em segundos</li>
+          <li>Sem fiador</li>
+          <li>Sem caução de 3 aluguéis</li>
+          <li>Assistência emergencial 24h</li>
+          <li>100% online</li>
+          <li>Pagamento no cartão de crédito</li>
+        </ul>
+        <a href="https://wa.me/5541XXXXXXXX?text=Olá!%20Quero%20simular%20minha%20aprovação%20no%20Aluguel%20Protegido" class="btn btn-primary" target="_blank">SIMULAR APROVAÇÃO</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="section faq">
+  <div class="container text-center">
+    <h2 class="section-title">Dúvidas? A gente responde.</h2>
+    <p class="section-sub">As perguntas que toda imobiliária faz antes de começar.</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">E se o inquilino não pagar?</button>
+        <div class="faq-answer">Nós pagamos o aluguel para a imobiliária no dia 5 e assumimos a cobrança com o inquilino. A imobiliária não perde nenhum dia de receita. A cobrança vira nossa responsabilidade.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">A aprovação é realmente instantânea?</button>
+        <div class="faq-answer">Sim. O inquilino preenche os dados, nosso sistema consulta as bases de crédito em tempo real e devolve a resposta em segundos. Sem análise manual, sem fila de espera. Tempo médio: 30 segundos.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">A assistência 24h funciona mesmo?</button>
+        <div class="faq-answer">Sim. O inquilino aciona pelo WhatsApp e nossa rede de parceiros resolve. Cobertura de até R$ 500 por ano em reparos emergenciais: encanador, eletricista e chaveiro. Sem custo adicional.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">Precisa de contrato longo?</button>
+        <div class="faq-answer">Não. Comece com 5 imóveis e teste sem compromisso. Cancele quando quiser, sem multa. Queremos que você experimente e veja os resultados antes de decidir.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">Funciona para qualquer imóvel?</button>
+        <div class="faq-answer">Para imóveis residenciais com aluguel de até R$ 5.000. Consulte para valores acima disso. Também atendemos imóveis comerciais em condições especiais.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">Como a imobiliária recebe o pagamento?</button>
+        <div class="faq-answer">Transferência bancária todo dia 5, direto na conta da imobiliária. Independentemente de o inquilino ter pago ou não. O dinheiro cai na sua conta — sempre.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA FINAL ===== -->
+<section class="section cta-final">
+  <div class="container text-center">
+    <h2>Bora zerar a inadimplência da sua imobiliária?</h2>
+    <p>Agende uma demonstração de 15 minutos. Sem compromisso. Sem vendedor.<br/>Vou te mostrar na prática como funciona.</p>
+    <a href="https://wa.me/5541XXXXXXXX?text=Olá!%20Quero%20agendar%20uma%20demonstração%20do%20Aluguel%20Protegido%20para%20minha%20imobiliária." class="btn btn-whatsapp" target="_blank">
+      📅 AGENDAR DEMO DE 15 MINUTOS
+    </a>
+    <p style="margin-top:20px;font-size:13px;opacity:.6;">
+      ✅ Já aprovamos +127 inquilinos em Campo Largo • 0% de inadimplência
+    </p>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <p>© 2026 <strong>Aluguel Protegido</strong> — Campo Largo - PR | CNPJ: 00.000.000/0001-00</p>
+    <p style="margin-top:6px;">📧 contato@aluguelprotegido.com.br &nbsp;|&nbsp; 📱 (41) 9XXXX-XXXX</p>
+  </div>
+</footer>
+
+<!-- ===== FAQ SCRIPT ===== -->
+<script>
+function toggleFAQ(btn) {
+  const answer = btn.nextElementSibling;
+  const isOpen = answer.classList.contains('open');
+  document.querySelectorAll('.faq-answer.open').forEach(a => a.classList.remove('open'));
+  document.querySelectorAll('.faq-question.active').forEach(b => b.classList.remove('active'));
+  if (!isOpen) {
+    answer.classList.add('open');
+    btn.classList.add('active');
+  }
+}
+</script>
+</body>
+</html>
